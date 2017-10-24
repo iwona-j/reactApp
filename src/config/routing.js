@@ -1,8 +1,11 @@
 import Login from '../components/Login'
 import Register from '../components/Register'
 import Dashboard from '../components/protected/Dashboard'
+
 import GiftList from '../components/protected/GiftList'
 import GiftForm from '../components/protected/GiftForm'
+import FriendList from '../components/protected/FriendList'
+import FriendDetails from '../components/protected/FriendDetails'
 
 export const publicRoutes = [
       {
@@ -23,6 +26,18 @@ export const privateRoutes = [
         name: 'Dashboard',
         component: Dashboard,
         nav: true
+      },
+      {
+        path: '/friends',
+        name: 'Znajomi',
+        component: FriendList,
+        nav: true
+      },
+      {
+        path: '/friends/:id',
+        name: '',
+        component: FriendDetails,
+        nav: false
       },
       {
         path: '/gift-list',

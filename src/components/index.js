@@ -8,14 +8,13 @@ import { firebaseAuth } from '../config/constants'
 import { privateRoutes, publicRoutes } from '../config/routing'
 
 
-
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
-      render={(props) => authed === true
+      render = {(props) => authed
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} /> }
     />
   )
 }
@@ -24,7 +23,7 @@ function PublicRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
-      render={(props) => authed === false
+      render = {(props) => !authed
         ? <Component {...props} />
         : <Redirect to='/dashboard' />}
     />

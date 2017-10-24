@@ -1,27 +1,32 @@
 import { ref, firebaseAuth } from '../config/constants'
 
-export function auth (email, pw) {
+export function auth (email, pw, username) {
   return firebaseAuth().createUserWithEmailAndPassword(email, pw)
-    .then(saveUser)
+    .then((user) => saveUser(user, username));
 }
 
 export function logout () {
-  return firebaseAuth().signOut()
+  return firebaseAuth().signOut();
 }
 
 export function login (email, pw) {
   return firebaseAuth().signInWithEmailAndPassword(email, pw)
+    .then( (user) => {
+      //TODO set some variable with user data
+      console.log(user)
+    });
 }
 
 export function resetPassword (email) {
-  return firebaseAuth().sendPasswordResetEmail(email)
+  return firebaseAuth().sendPasswordResetEmail(email);
 }
 
-export function saveUser (user) {
-  return ref.child(`users/${user.uid}/info`)
+export function saveUser (user, username) {
+  return ref.child(`users/${user.uid}`)
     .set({
       email: user.email,
-      uid: user.uid
+      id: user.uid,
+      username: username
     })
-    .then(() => user)
+    .then(() => user);
 }

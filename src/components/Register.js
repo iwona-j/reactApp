@@ -9,16 +9,22 @@ function setErrorMsg(error) {
 
 export default class Register extends Component {
   state = { registerError: null }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    auth(this.email.value, this.pw.value)
+    auth(this.email.value, this.pw.value, this.username.value)
       .catch(e => this.setState(setErrorMsg(e)))
   }
+
   render () {
     return (
       <div className="col-sm-6 col-sm-offset-3">
-        <h1>Register</h1>
+        <h1>Rejestracja</h1>
         <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <label>Nazwa użytkownika</label>
+            <input className="form-control" ref={(username) => this.username = username} placeholder="Nazwa użytkownika"/>
+          </div>
           <div className="form-group">
             <label>Email</label>
             <input className="form-control" ref={(email) => this.email = email} placeholder="Email"/>
