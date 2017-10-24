@@ -31,3 +31,9 @@ bower_components/
 
 # IDE/Editor data
 .idea
+
+# dist
+dist
+
+# configuration
+src/config/constants
