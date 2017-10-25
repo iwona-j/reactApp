@@ -2,9 +2,9 @@ import Login from '../components/Login'
 import Register from '../components/Register'
 import Dashboard from '../components/protected/Dashboard'
 
-import GiftList from '../components/protected/GiftList'
+import Gifts from '../components/protected/Gifts'
 import GiftForm from '../components/protected/GiftForm'
-import FriendList from '../components/protected/FriendList'
+import Friends from '../components/protected/Friends'
 import FriendDetails from '../components/protected/FriendDetails'
 
 export const publicRoutes = [
@@ -30,7 +30,7 @@ export const privateRoutes = [
       {
         path: '/friends',
         name: 'Znajomi',
-        component: FriendList,
+        component: Friends,
         nav: true
       },
       {
@@ -40,13 +40,13 @@ export const privateRoutes = [
         nav: false
       },
       {
-        path: '/gift-list',
+        path: '/gifts',
         name: 'GiftList',
-        component: GiftList,
+        component: Gifts,
         nav: true
       },
       {
-        path: '/gift-form',
+        path: '/gifts/form',
         pathParams: '/:id?',
         name: 'Dodaj prezent',
         component: GiftForm,
