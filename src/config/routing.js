@@ -47,7 +47,7 @@ export const privateRoutes = [
       },
       {
         path: '/gift-form',
-        params: '/:id?',
+        pathParams: '/:id?',
         name: 'Dodaj prezent',
         component: GiftForm,
         nav: true

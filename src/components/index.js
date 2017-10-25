@@ -68,8 +68,8 @@ export default class App extends Component {
                 </li>
                 {
                   this.state.authed
-                  ? privateRoutes.map(r => r.nav ? <li><Link to={r.path} className="navbar-brand">{r.name}</Link></li> : '')
-                  : publicRoutes.map(r => <li><Link to={r.path} className="navbar-brand">{r.name}</Link></li>)
+                  ? privateRoutes.map(r => r.nav ? <li key={r.path}><Link to={r.path} className="navbar-brand">{r.name}</Link></li> : '')
+                  : publicRoutes.map(r => <li key={r.path}><Link to={r.path} className="navbar-brand">{r.name}</Link></li>)
                 }
                 {
                   this.state.authed
@@ -92,8 +92,8 @@ export default class App extends Component {
                 <Route path='/' exact component={Home} />
                 {
                   this.state.authed
-                  ? privateRoutes.map(r => <PrivateRoute authed={this.state.authed} path={r.path + (r.params || '')} component={r.component}/>)
-                  : publicRoutes.map(r => <PublicRoute authed={this.state.authed} path={r.path} component={r.component}/>)
+                  ? privateRoutes.map(r => <PrivateRoute key="r.path" authed={this.state.authed} path={r.path + (r.pathParams || '')} component={r.component}/>)
+                  : publicRoutes.map(r => <PublicRoute key="r.path" authed={this.state.authed} path={r.path} component={r.component}/>)
                 }
                 <Redirect to="/" />
               </Switch>
