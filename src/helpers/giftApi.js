@@ -1,6 +1,7 @@
 import { ref } from '../config/constants'
 
 export function addGift (gift) {
+  gift = preparegitf(gift);
   let newGiftKey = ref.child('gifts').push().key;
   gift.id = newGiftKey;
 
@@ -25,4 +26,11 @@ export function getUsersGiftList (userId) {
   return ref.child('gifts')
     .orderByChild('userId')
     .equalTo(userId).once('value');
+}
+
+function preparegitf (obj) {
+  return Object.keys(obj).reduce((_object, property) => {
+    _object[property] = obj[property].value;
+    return _object;
+  }, {});
 }

@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 import GiftTile from './GiftTile'
-import { getUsersGiftList } from '../../helpers/giftApiService'
+import { getUsersGiftList } from '../../helpers/giftApi'
 
 export default class GiftList extends Component {
-
-  constructor (props) {
-  	super(props)
-
-  	console.log('GiftList constructor', props)
-  }
-
   state = {
     page: 0,
     limit: 50,
@@ -27,7 +20,6 @@ export default class GiftList extends Component {
   }
   
   render () {
-  	console.log('render', this.state.gifts)
     return (
       <div>
         {

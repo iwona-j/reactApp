@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GiftList from './GiftList'
 
-import { getUsersGiftList } from '../../helpers/giftApiService'
+import { getUsersGiftList } from '../../helpers/giftApi'
 
 export default class FriendDetails extends Component {
 
