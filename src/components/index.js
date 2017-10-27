@@ -13,9 +13,12 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
-      render = {(props) => authed
+      render =
+      {
+        (props) => authed
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} /> }
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />
+      }
     />
   )
 }
@@ -24,18 +27,23 @@ function PublicRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
-      render = {(props) => !authed
+      render =
+      {
+        (props) => !authed
         ? <Component {...props} />
-        : <Redirect to='/dashboard' />}
+        : <Redirect to='/dashboard' />
+      }
     />
   )
 }
 
 export default class App extends Component {
+
   state = {
     authed: false,
     loading: true
   }
+
   componentDidMount () {
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
       if (user) {
@@ -51,9 +59,11 @@ export default class App extends Component {
       }
     })
   }
+
   componentWillUnmount () {
     this.removeListener()
   }
+
   render() {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <BrowserRouter>

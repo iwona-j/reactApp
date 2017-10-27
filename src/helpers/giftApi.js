@@ -22,6 +22,11 @@ export function removeGift (giftId) {
     .then()
 }
 
+export function getGift (giftId) {
+  return ref.child(`gifts/${giftId}`)
+    .once('value');
+}
+
 export function getUsersGiftList (userId) {
   return ref.child('gifts')
     .orderByChild('userId')

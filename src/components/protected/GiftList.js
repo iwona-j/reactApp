@@ -13,7 +13,7 @@ export default class GiftList extends Component {
   componentDidMount () {
   	let userId = 'wymTtuTSu8ZRcAEI0BJZCLn9H1D3';
 
- 	getUsersGiftList(userId)
+ 	  getUsersGiftList(userId)
 	  .then((snapshot) => {
    		 this.setState({gifts: snapshot.val()})
 	  });
