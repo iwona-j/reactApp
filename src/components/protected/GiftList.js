@@ -22,12 +22,14 @@ export default class GiftList extends Component {
   render () {
     return (
       <div>
+      <div className="row">
         {
           Object.keys(this.state.gifts).map((key) => {
               let gift = this.state.gifts[key];
               return <GiftTile key={gift.id} gift={gift}></GiftTile>
           })
         }
+      </div>
       </div>
     )
   }

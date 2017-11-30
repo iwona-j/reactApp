@@ -1,13 +1,23 @@
 import { ref } from '../config/constants'
 
-export function addGift (gift) {
-  let newGiftKey = ref.child('gifts').push().key;
-  gift.id = newGiftKey;
+export function addFriendRequest (userId, friendId) {
+  let newFriendshipKey = ref.child('friends').push().key;
+  let friendship = {
+      userId,
+      friendId,
+      status: 'NEW'
+  }
 
-  return ref.child(`gifts/${newGiftKey}`)
-    .set(gift)
-    .then(() => gift)
+  return ref.child(`friends/${newFriendshipKey}`)
+    .set(friendship)
+    .then(() => friendship)
 }
+
+export function acceptFriendshipRequest (userId, friendId) {
+    
+}
+
+
 
 export function editGift (gift) {
   return ref.child(`gifts/${gift.id}`)
